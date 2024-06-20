@@ -1,6 +1,7 @@
-import { NftType } from "./enum/nftType.interface";
+import { NftType } from "./enum/nftType";
 import { IAlchemyPay } from "./type/alchemyPay.interface";
 import { ICreatePaymentPayload } from "./type/createPayment.interface";
+import { IVerifySignature } from "./type/verifySignature.interface";
 import { generateDataForSignature, generateSignature } from "./utils/signature";
 
 export class AlchemyPay {
@@ -23,7 +24,7 @@ export class AlchemyPay {
     this.nftCheckoutEndpoint = nftCheckoutEndpoint;
   }
 
-  public async createPayment({
+  public createPayment({
     crypto,
     cryptoAmount,
     targetFiat,
@@ -31,7 +32,7 @@ export class AlchemyPay {
     name,
     picture,
     quantity,
-  }: ICreatePaymentPayload) {
+  }: ICreatePaymentPayload): string {
     try {
       if (
         !crypto ||
@@ -73,5 +74,66 @@ export class AlchemyPay {
     } catch (error) {
       throw error;
     }
+  }
+  public verifySignature({
+    amount,
+    orderNo,
+    quantity,
+    payTime,
+    signature,
+    type,
+    merchantOrderNo,
+    crypto,
+    payType,
+    cryptoAmount,
+    appId,
+    name,
+    transactionRate,
+    fiat,
+    status,
+  }: IVerifySignature): boolean {
+    if (
+      !amount ||
+      !orderNo ||
+      !quantity ||
+      !payTime ||
+      !signature ||
+      !type ||
+      !merchantOrderNo ||
+      !crypto ||
+      !payType ||
+      !cryptoAmount ||
+      !appId ||
+      !name ||
+      !transactionRate ||
+      !fiat ||
+      !status
+    ) {
+      throw new Error("Invalid payload for signature verification");
+    }
+
+    const dataSign = generateDataForSignature({
+      amount,
+      orderNo,
+      quantity,
+      payTime,
+      type,
+      merchantOrderNo,
+      crypto,
+      payType,
+      cryptoAmount,
+      appId,
+      name,
+      transactionRate,
+      fiat,
+      status,
+    });
+
+    const verifySignature = generateSignature(dataSign, this.appSecret);
+    if (signature !== verifySignature) {
+      throw new Error("Invalid signature");
+    }
+
+    return true;
   }
 }
