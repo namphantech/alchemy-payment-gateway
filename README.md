@@ -14,7 +14,7 @@ You need to contact to AlchemyPay to get account as merchant before.
 npm i alchemy-payment-gateway
 ```
 
-## Usage
+## Integration
 
 ```typescript
 import { AlchemyPay } from "alchemy-payment-gateway";
@@ -57,7 +57,7 @@ class AlchemyPaymentService {
     }
   }
 
-  /* verify webhook request */
+  /* verify webhook */
   verifyPaymentResponse({
     amount,
     orderNo,
