@@ -1,6 +1,6 @@
 {
   "name": "alchemy-payment-gateway",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -14,7 +14,13 @@
     "type": "git",
     "url": "https://github.com/namphantech/alchemy-payment-gateway.git"
   },
-  "keywords": [],
+  "keywords": [
+    "alchemy",
+    "payment",
+    "gateway",
+    "nodejs",
+    "alchemyPay"
+  ],
   "author": "",
   "license": "ISC",
   "description": "",

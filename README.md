@@ -2,14 +2,13 @@
 
 The sdk will make easily to integrate Alchemy Pay's NFT Checkout(crypto-based) feature to enable end users/customers to purchase NFTS using both cards and local payment methods worldwide in your application.
 
-## Process flow
+## Checkout Flow chart
 
 ![Flow](https://files.readme.io/26a2353-Flowchart-2.jpg)
 
 ## Installation
-
 You need to contact to AlchemyPay to get account as merchant before.
-Use the package manager [npm](https://www.npmjs.com/) to install.
+
 
 ```bash
 npm i alchemy-payment-gateway
@@ -20,11 +19,7 @@ npm i alchemy-payment-gateway
 ```typescript
 import { AlchemyPay } from "alchemy-payment-gateway";
 
-/* 
-nftCheckoutEndpoint: 
-  sandbox:  https://nft-sbx.alchemytech.cc
-  production: https://nftcheckout.alchemypay.org
-*/
+
 class AlchemyPaymentService {
   private alchemyPayment;
   constructor(appId, appSecret, redirectUrl, callbackUrl, nftCheckoutEndpoint) {
