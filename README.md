@@ -43,7 +43,7 @@ class AlchemyPaymentService {
     quantity = "quantity",
   }) {
     try {
-      const paymentUrl = await this.alchemyPayment.createPayment({
+      const paymentUrl = this.alchemyPayment.createPayment({
         cryptoAmount,
         targetFiat,
         merchantOrderNo,
