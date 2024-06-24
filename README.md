@@ -103,3 +103,9 @@ class AlchemyPaymentService {
 ## Contact 
  Mail: phanvanhoainam22@gmail.com
 
+## Docs
+- AlchemyPay Integration Document: https://alchemypay.readme.io/docs/introduction
+- Details: https://alchemypay.org/
+
+
+
