@@ -21,7 +21,7 @@ import { AlchemyPay } from "alchemy-payment-gateway";
 
 
 class AlchemyPaymentService {
-  private alchemyPayment;
+  private readonly alchemyPayService: AlchemyPay;
   constructor(appId, appSecret, redirectUrl, callbackUrl, nftCheckoutEndpoint) {
     this.alchemyPayment = new AlchemyPay({
       appId,
@@ -32,8 +32,8 @@ class AlchemyPaymentService {
     });
   }
 
-  /* generate payment url for NFT checkout action*/
-  createPayment({
+  /* generate payment url for NFT checkout */
+  public createPayment({
     crypto = "crypto type",
     cryptoAmount = "crypto amount to checkout",
     targetFiat = "fiat type",
@@ -43,7 +43,7 @@ class AlchemyPaymentService {
     quantity = "quantity",
   }) {
     try {
-      const paymentUrl = this.alchemyPayment.createPayment({
+      const paymentUrl = this.alchemyPayService.createPayment({
         cryptoAmount,
         targetFiat,
         merchantOrderNo,
@@ -58,7 +58,7 @@ class AlchemyPaymentService {
   }
 
   /* verify webhook */
-  verifyPaymentResponse({
+  public verifyPaymentResponse({
     amount,
     orderNo,
     quantity,
@@ -76,7 +76,7 @@ class AlchemyPaymentService {
     status,
   }) {
     try {
-      const isValidSignature = this.alchemyPayment.verifySignature({
+      const isValidSignature = this.alchemyPayService.verifySignature({
         amount,
         orderNo,
         quantity,
@@ -104,7 +104,7 @@ class AlchemyPaymentService {
  Mail: phanvanhoainam22@gmail.com
 
 ## Docs
-- AlchemyPay Integration Document: https://alchemypay.readme.io/docs/introduction
+- AlchemyPay Integration Document: https://alchemypay.readme.io/docs/introduction-4
 - Details: https://alchemypay.org/
 
 
