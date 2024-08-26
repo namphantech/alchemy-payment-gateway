@@ -11,7 +11,7 @@ You need to contact to AlchemyPay to get account as merchant before.
 
 
 ```bash
-npm i alchemy-payment-gateway
+yarn add alchemy-payment-gateway
 ```
 
 ## Integration
@@ -23,7 +23,7 @@ import { AlchemyPay } from "alchemy-payment-gateway";
 class AlchemyPaymentService {
   private readonly alchemyPayService: AlchemyPay;
   constructor(appId, appSecret, redirectUrl, callbackUrl, nftCheckoutEndpoint) {
-    this.alchemyPayment = new AlchemyPay({
+    this.alchemyPayService = new AlchemyPay({
       appId,
       appSecret,
       redirectUrl,
